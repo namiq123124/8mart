@@ -1,0 +1,325 @@
+:root{
+    --fosfor-red:#ff0040;
+    --fosfor-green:#39ff14;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background: radial-gradient(circle at top,#071021,#02060d);
+    height:100vh;
+    overflow:hidden;
+    display:flex;
+    justify-content:center;
+    align-items:flex-end;
+    font-family:sans-serif;
+}
+body::after{
+content:"";
+position:absolute;
+bottom: 1px;;
+width:100%;
+height:8vh;
+background:#0b1f0b;
+box-shadow:0 -10px 30px #997f0a;
+}
+
+
+/* Başlıq */
+
+.greeting{
+    position:absolute;
+    top:10%;
+    width:100%;
+    text-align:center;
+    color:white;
+    text-shadow:0 0 20px var(--fosfor-red);
+}
+.stem{
+  width:8px;
+  height:250px;
+  background:lime;
+  box-shadow:0 0 15px lime;
+}
+.container{
+  width:100%;
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:flex-end;
+  gap:40px;
+  flex-wrap:wrap;
+  overflow:visible;
+
+  
+  
+  
+}
+.greeting h1{
+font-size:40px;
+color:white;
+text-shadow:
+0 0 10px #ff0040,
+0 0 20px #ff0040,
+0 0 40px #ff0040,
+0 0 80px #ff0040;
+
+animation:glowText 2s infinite alternate;
+}
+@keyframes glowText{
+    from{ text-shadow:0 0 10px var(--fosfor-red);}
+    to{ text-shadow:0 0 40px var(--fosfor-red),0 0 60px var(--fosfor-red);}
+}
+
+/* Buket */
+
+.flowers{
+position:absolute;
+bottom:0;
+left:50%;
+transform:translateX(-50%);
+display:flex;
+align-items:flex-end;
+gap:4.5vmin;
+}
+
+/* Gül */
+
+.flower{
+    position:relative;
+    height:40vh;
+    width:8vmin;   /* bu çox vacibdir */
+    margin-bottom: 40px;
+}
+
+.flower--1{animation-delay:0s;}
+.flower--2{animation-delay:.5s;}
+.flower--3{animation-delay:1s;}
+
+@keyframes grow{
+    0%{
+        transform:scaleY(0);
+        opacity:0;
+    }
+    100%{
+        transform:scaleY(1);
+        opacity:1;
+    }
+}
+
+/* Saplaq */
+
+.flower__line{
+  width:1vmin;
+    height:100%;
+    background:linear-gradient(to top,transparent,var(--fosfor-green));
+    border-radius:4vmin;
+    box-shadow:0 0 15px var(--fosfor-green);
+    position:relative;
+
+    transform-origin:bottom;
+    animation:growStem 2s ease forwards;
+}
+
+
+/* Yarpaqlar */
+
+.line__leaf{
+    position:absolute;
+    width:6vmin;
+    height:4vmin;
+    background:var(--fosfor-green);
+    border-radius:50% 0 50% 0;
+    box-shadow:0 0 10px var(--fosfor-green);
+}
+
+.line__leaf:nth-child(1){
+    left:100%;
+    top:40%;
+    transform:rotate(20deg);
+}
+
+.line__leaf:nth-child(2){
+    right:100%;
+    top:60%;
+    transform:rotate(-20deg) scaleX(-1);
+}
+
+.line__leaf:nth-child(3){
+    left:100%;
+    top:75%;
+    transform:rotate(10deg);
+}
+
+/* Gül ləçəkləri */
+
+.flower__leafs{
+    position:absolute;
+    top:-5vmin;
+    left:50%;
+    transform:translateX(-50%);
+}
+
+.flower__leaf{
+    position:absolute;
+    bottom:0;
+    left:50%;
+    width:12vmin;
+    height:16vmin;
+    background:linear-gradient(to top,#ff0040,#ff5e8e);
+    border-radius:50% 50% 15% 15%;
+    transform-origin:bottom center;
+    box-shadow:0 0 20px #ff0040;
+    opacity:0;
+    animation:bloom 1.5s forwards 1.5s;
+    
+}
+
+.fl--1 { transform: translateX(-50%) rotate(-45deg); }
+.fl--2 { transform: translateX(-50%) rotate(45deg); }
+.fl--3 { transform: translateX(-50%) rotate(-20deg); }
+.fl--4 { transform: translateX(-50%) rotate(20deg); }
+.fl--5 { transform: translateX(-50%) rotate(0deg); }
+@keyframes bloom {
+    0%{
+        opacity:0;
+        scale:0;
+    }
+
+    100%{
+        opacity:1;
+        scale:1;
+    }
+}
+/* Gülün ortası */
+
+
+
+
+@keyframes pulse{
+    0%,100%{transform:translateX(-50%) scale(1);}
+    50%{transform:translateX(-50%) scale(1.2);}
+}
+
+/* İşıq böcəkləri */
+.firefly{
+    position:absolute;
+    width:4px;
+    height:4px;
+    background:yellow;
+    border-radius:50%;
+    box-shadow:
+    0 0 10px yellow,
+    0 0 20px yellow,
+    0 0 40px yellow;
+
+    animation:fly 12s infinite linear alternate;
+}
+.flower:nth-child(1){
+transform: rotate(-10deg) translateY(0);
+}
+
+.flower:nth-child(2){
+transform: rotate(-6deg) translateY(-2vmin);
+}
+
+.flower:nth-child(3){
+transform: rotate(-3deg) translateY(-1vmin);
+}
+
+.flower:nth-child(4){
+transform: rotate(3deg) translateY(-1vmin);
+}
+
+.flower:nth-child(5){
+transform: rotate(6deg) translateY(-2vmin);
+}
+
+.flower:nth-child(6){
+transform: rotate(10deg) translateY(0);
+}
+
+@keyframes fly{
+    0%{transform:translate(0,0);opacity:0;}
+    50%{opacity:1;}
+    100%{transform:translate(120px,-120px);opacity:0;}
+}
+@keyframes sway{
+0%{ transform: rotate(-2deg); }
+100%{ transform: rotate(2deg); }
+}
+
+.flower{
+animation:sway 4s infinite alternate ease-in-out;
+transform-origin:bottom center;
+}
+.flower{
+animation: sway 4s infinite alternate ease-in-out;
+transform-origin: bottom center;
+}
+
+
+.flower--1{ animation:sway 4s infinite alternate ease-in-out; }
+.flower--2{ animation:sway 5s infinite alternate ease-in-out; }
+.flower--3{ animation:sway 4.5s infinite alternate ease-in-out; }
+.flower--4{ animation:sway 6s infinite alternate ease-in-out; }
+.flower--5{ animation:sway 5.5s infinite alternate ease-in-out; }
+.flower--6{ animation:sway 4.8s infinite alternate ease-in-out; }
+
+.firefly:nth-child(1){ top:20%; left:13%; }
+.firefly:nth-child(2){ top:30%; left:82%; }
+.firefly:nth-child(3){ top:60%; left:21%; }
+.firefly:nth-child(4){ top:70%; left:71%; }
+.firefly:nth-child(5){ top:40%; left:52%; }
+.firefly:nth-child(6){ top:10%; left:48%; }
+.firefly:nth-child(7){ top:50%; left:91%; }
+.firefly:nth-child(8){ top:80%; left:32%; }
+.firefly:nth-child(9){ top:25%; left:68%; }
+.firefly:nth-child(10){ top:33%; left:16%; }
+.firefly:nth-child(11){ top:23%; left:14%; }
+.firefly:nth-child(12){ top:39%; left:85%; }
+.firefly:nth-child(13){ top:66%; left:22%; }
+.firefly:nth-child(14){ top:74%; left:73%; }
+.firefly:nth-child(15){ top:43%; left:50%; }
+.firefly:nth-child(16){ top:13%; left:40%; }
+.firefly:nth-child(17){ top:54%; left:97%; }
+.firefly:nth-child(18){ top:82%; left:36%; }
+.firefly:nth-child(19){ top:27%; left:60%; }
+.firefly:nth-child(20){ top:68%; left:10%; }
+.firefly:nth-child(21){ top:54%; left:19%; }
+.firefly:nth-child(22){ top:65%; left:78%; }
+.firefly:nth-child(23){ top:12%; left:26%; }
+.firefly:nth-child(24){ top:7%; left:79%; }
+.firefly:nth-child(25){ top:41.5%; left:56%; }
+.firefly:nth-child(26){ top:16%; left:34%; }
+.firefly:nth-child(27){ top:23%; left:26%; }
+.firefly:nth-child(28){ top:80%; left:37%; }
+.firefly:nth-child(29){ top:25%; left:67%; }
+.firefly:nth-child(30){ top:65%; left:18%; }
+.firefly:nth-child(3),
+.firefly:nth-child(7),
+.firefly:nth-child(15){
+width:5px;
+height:5px;
+}
+@keyframes fly{
+    0%{transform:translate(0,0);opacity:0;}
+    25%{opacity:1;}
+    50%{transform:translate(100px,-80px);}
+    75%{opacity:1;}
+    100%{transform:translate(-120px,-160px);opacity:0;}
+}
+@keyframes growStem{
+    0%{
+        transform:scaleY(0);
+        opacity:0;
+    }
+    100%{
+        transform:scaleY(1);
+        opacity:1;
+    }
+}
